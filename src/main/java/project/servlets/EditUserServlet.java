@@ -20,9 +20,15 @@ public class EditUserServlet extends HttpServlet {
         long idchange = Long.parseLong(req.getParameter("idchange"));
         String namechange = req.getParameter("namechange");
         int agechange = Integer.parseInt(req.getParameter("agechange"));
+        String rolechange = req.getParameter("rolechange");
+        String loginchange = req.getParameter("loginchange");
+        String passwordchange = req.getParameter("passwordchange");
         req.setAttribute("idchange", idchange);
         req.setAttribute("namechange", namechange);
         req.setAttribute("agechange", agechange);
+        req.setAttribute("rolechange", rolechange);
+        req.setAttribute("loginchange", loginchange);
+        req.setAttribute("passwordchange", passwordchange);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/editUser.jsp");
         dispatcher.forward(req, resp);
     }
@@ -32,10 +38,13 @@ public class EditUserServlet extends HttpServlet {
         long idchange = Long.valueOf(req.getParameter("idchange"));
         String namechange = req.getParameter("namechange");
         int agechange = Integer.parseInt(req.getParameter("agechange"));
+        String rolechange = req.getParameter("rolechange");
+        String loginchange = req.getParameter("loginchange");
+        String passwordchange = req.getParameter("passwordchange");
         DBService dbService = null;
         try {
             dbService = new DBService();
-            User user = new User(idchange, namechange, agechange);
+            User user = new User(idchange, namechange, agechange, rolechange, loginchange, passwordchange);
             dbService.updateUser(user);
         }catch (SQLException e) {
             e.printStackTrace();

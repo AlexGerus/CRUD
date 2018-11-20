@@ -4,6 +4,7 @@ import project.dbHelper.DBHelper;
 import project.module.User;
 
 import javax.persistence.EntityManager;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO{
@@ -34,6 +35,16 @@ public class UserHibernateDAO implements UserDAO{
         em.getTransaction().commit();
     }
 
+    @Override
+    public void signUpUser(User user) throws SQLException {
+        em.getTransaction().begin();
+        if (!em.contains(user)){
+            em.persist(user);
+            em.flush();
+        }
+        em.getTransaction().commit();
+    }
+
     public void deleteUser(long id){
         User user = findUserById(id);
         em.getTransaction().begin();
@@ -44,4 +55,10 @@ public class UserHibernateDAO implements UserDAO{
     public List<User> findAllUsers(){
         return em.createQuery("from User").getResultList();
     }
+
+    public User getUserByLogin(String login){
+        return (User) em.createQuery("from User where login = :login").setParameter("login", login).getSingleResult();
+    }
+
+
 }

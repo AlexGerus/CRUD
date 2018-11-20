@@ -9,11 +9,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
   <head>
-    <title>Здраствуйте!</title>
+    <title>Hello!</title>
   </head>
   <body>
-  <form action="/userList" method="get">
-      <input type="submit" value="User List">
+  <form action="/signin" method="post">
+    Login:<input type="text" name="login"><br><br>
+    Password:<input type="text" name="password"><br>
+    <input type="submit" value="Sign In"><br>
+  </form>
+  <form action="signUp.jsp">
+      Are you sign up?<br>
+      <input type="submit" value="Sign Up">
   </form>
 
   </body>

@@ -25,7 +25,7 @@
     <tbody>
     <c:forEach items="${list}" var="user">
         <tr>
-            <td><c:out value="${user.id}"/></td>
+            <td>${user.id}</td>
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.age}"/></td>
             <td><form action="/deleteUser" method="post">
@@ -35,10 +35,13 @@
             </td>
             <td>
                 <form action="/editUser" method="get">
-                    <input type="hidden" name="idchange" value="${user.id}">
-                    <input type="hidden" name="namechange" value="${user.name}">
-                    <input type="hidden" name="agechange" value="${user.age}">
-                    <input type="submit" value="edit">
+                <input type="hidden" name="idchange" value="${user.id}">
+                <input type="hidden" name="namechange" value="${user.name}">
+                <input type="hidden" name="agechange" value="${user.age}">
+                <input type="hidden" name="rolechange" value="${user.role}">
+                <input type="hidden" name="loginchange" value="${user.login}">
+                <input type="hidden" name="passwordchange" value="${user.password}">
+                <input type="submit" value="edit">
                 </form>
             </td>
         </tr>

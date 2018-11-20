@@ -27,12 +27,20 @@ public class DBService {
         userDAO.updateUser(user);
     }
 
+    public void signUpUser(User user) throws SQLException, ClassNotFoundException, IOException {
+        userDAO.signUpUser(user);
+    }
+
     public void deleteUser(long id) throws SQLException, ClassNotFoundException, IOException {
         userDAO.deleteUser(id);
     }
 
     public List<User> findAllUsers() throws SQLException, ClassNotFoundException, IOException {
         return userDAO.findAllUsers();
+    }
+
+    public User getUserByLogin(String login) throws SQLException {
+        return userDAO.getUserByLogin(login);
     }
 }
 

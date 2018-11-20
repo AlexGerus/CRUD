@@ -7,21 +7,34 @@ import java.io.Serializable;
 @Table(name = "users")
 public class User implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
     private String name;
     private int age;
+    private String login;
+    private String password;
+    private String role;
 
     public User() {
     }
 
-    public User(long id, String name, int age){
+    public User(String name, int age, String role, String login, String password){
+        this.name = name;
+        this.age = age;
+        this.role = role;
+        this.login = login;
+        this.password = password;
+    }
+
+    public User(long id, String name, int age, String role, String login, String password){
         this.id = id;
         this.name = name;
         this.age = age;
+        this.role = role;
+        this.login = login;
+        this.password = password;
     }
-
     public User(String name, int age) {
         this.name = name;
         this.age = age;
@@ -49,6 +62,30 @@ public class User implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

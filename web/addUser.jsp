@@ -8,12 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Добавить нового пользователя</title>
+    <title>Add User</title>
 </head>
 <body>
 <form action = "/addUser" method="post">
-    <input type="text" name="name" ><br>
-    <input type="text" name="age"><br>
+    Name: <input type="text" name="name" ><br>
+    Age: <input type="text" name="age"><br>
+    Login: <input type="text" name="login"><br>
+    Password: <input type="text" name="password"><br>
+    Role: <input type="text" name="role"><br>
     <input type="submit" value="Add user">
 </form>
 </body>

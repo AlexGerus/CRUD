@@ -9,6 +9,9 @@ public interface UserDAO {
     User findUserById(long id);
     long saveUser(User user) throws SQLException;
     void updateUser(User user) throws SQLException;
+    void signUpUser(User user) throws SQLException;
     void deleteUser(long id) throws SQLException;
     List<User> findAllUsers() throws SQLException;
+    User getUserByLogin(String login) throws SQLException;
+
 }

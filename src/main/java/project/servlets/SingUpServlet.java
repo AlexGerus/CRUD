@@ -1,6 +1,5 @@
 package project.servlets;
 
-import project.dao.DAOFactory;
 import project.dbService.DBService;
 import project.module.User;
 
@@ -12,25 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet("/userList")
-public class UserListServlet extends HttpServlet {
-
+@WebServlet("/signup")
+public class SingUpServlet extends HttpServlet {
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        int age = Integer.parseInt(req.getParameter("age"));
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
         DBService dbService = null;
-        try {
+        try{
             dbService = new DBService();
-            List<User> list = dbService.findAllUsers();
-            req.setAttribute("list", list);
+            User user = new User(name, age, "User", login, password);
+            dbService.signUpUser(user);
 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("userList.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("index.jsp");
+
     }
 }

@@ -18,10 +18,13 @@ public class AddUserServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
+        String role = req.getParameter("role");
         DBService dbService = null;
         try {
             dbService = new DBService();
-            User user = new User(name, age);
+            User user = new User(name, age, role, login, password);
             dbService.saveUser(user);
         } catch (SQLException e) {
             e.printStackTrace();

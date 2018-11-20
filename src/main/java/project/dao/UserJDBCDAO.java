@@ -38,6 +38,11 @@ public class UserJDBCDAO implements UserDAO{
         });
     }
 
+    @Override
+    public User getUserByLogin(String login) throws SQLException {
+        return null;
+    }
+
     public void deleteUser(long id) throws SQLException{
         String sql = "delete from users where id = " + id;
         executor.execUpdate(sql);
@@ -46,5 +51,10 @@ public class UserJDBCDAO implements UserDAO{
     public void updateUser(User user) throws SQLException{
         String sql = "update users set name = '" + user.getName() + "', age = " + user.getAge() + " where id = " + user.getId();
         executor.execUpdate(sql);
+    }
+
+    @Override
+    public void signUpUser(User user) throws SQLException {
+
     }
 }
