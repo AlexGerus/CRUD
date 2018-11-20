@@ -1,10 +1,20 @@
 package project.module;
 
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class User {
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+    @Id
+    @GeneratedValue
     private long id;
+    @Column(name = "name")
     private String name;
     private int age;
+
+    public User() {
+    }
 
     public User(long id, String name, int age){
         this.id = id;

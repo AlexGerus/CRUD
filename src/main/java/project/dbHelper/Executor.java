@@ -1,4 +1,4 @@
-package project.dbService;
+package project.dbHelper;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

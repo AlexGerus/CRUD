@@ -45,6 +45,8 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="${pageContext.servletContext.contextPath}/addUser.jsp">Add User</a>
+<form action="addUser.jsp">
+    <input type="submit" value="Add User">
+</form>
 </body>
 </html>

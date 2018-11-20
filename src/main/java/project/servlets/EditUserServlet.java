@@ -1,6 +1,7 @@
 package project.servlets;
 
-import project.dbHelper.DBService;
+import project.dao.DAOFactory;
+import project.dbService.DBService;
 import project.module.User;
 
 import javax.servlet.RequestDispatcher;
@@ -28,12 +29,14 @@ public class EditUserServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        long idchange = Long.parseLong(req.getParameter("idchange"));
+        long idchange = Long.valueOf(req.getParameter("idchange"));
         String namechange = req.getParameter("namechange");
         int agechange = Integer.parseInt(req.getParameter("agechange"));
-        try{
-            DBService dbService = new DBService();
-            dbService.editUser(idchange, namechange, agechange);
+        DBService dbService = null;
+        try {
+            dbService = new DBService();
+            User user = new User(idchange, namechange, agechange);
+            dbService.updateUser(user);
         }catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -1,6 +1,9 @@
 package project.servlets;
 
-import project.dbHelper.DBService;
+import project.dao.DAOFactory;
+import project.dbService.DBService;
+import project.module.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +16,10 @@ import java.sql.SQLException;
 public class DeleteUserServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        long id = Long.parseLong(req.getParameter("id"));
+        long id = Long.valueOf(req.getParameter("id"));
+        DBService dbService = null;
         try {
-            DBService dbService = new DBService();
+            dbService = new DBService();
             dbService.deleteUser(id);
         }catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package project.servlets;
 
-import project.dbHelper.DBService;
+import project.dao.DAOFactory;
+import project.dbService.DBService;
 import project.module.User;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/addUser")
-public class AddUserServlet extends HttpServlet {
+public class AddUserServlet extends HttpServlet{
 
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +22,7 @@ public class AddUserServlet extends HttpServlet {
         try {
             dbService = new DBService();
             User user = new User(name, age);
-            dbService.addUser(user);
+            dbService.saveUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
