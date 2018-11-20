@@ -21,16 +21,9 @@ public class AddUserServlet extends HttpServlet{
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         String role = req.getParameter("role");
-        DBService dbService = null;
-        try {
-            dbService = new DBService();
-            User user = new User(name, age, role, login, password);
-            dbService.saveUser(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBService dbService = new DBService();
+        User user = new User(name, age, role, login, password);
+        dbService.saveUser(user);
         resp.sendRedirect("/userList");
     }
 }

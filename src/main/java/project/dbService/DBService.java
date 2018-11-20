@@ -11,35 +11,35 @@ import java.util.List;
 public class DBService {
     private UserDAO userDAO;
 
-    public DBService() throws SQLException, IOException, ClassNotFoundException {
+    public DBService() throws IOException {
         userDAO = DAOFactory.getUserDAO();
     }
 
-    public User findUserById(long id) throws SQLException, ClassNotFoundException, IOException {
+    public User findUserById(long id){
         return userDAO.findUserById(id);
     }
 
-    public long saveUser(User user) throws SQLException, ClassNotFoundException, IOException {
+    public long saveUser(User user){
         return userDAO.saveUser(user);
     }
 
-    public void updateUser(User user) throws SQLException, ClassNotFoundException, IOException {
+    public void updateUser(User user){
         userDAO.updateUser(user);
     }
 
-    public void signUpUser(User user) throws SQLException, ClassNotFoundException, IOException {
+    public void signUpUser(User user){
         userDAO.signUpUser(user);
     }
 
-    public void deleteUser(long id) throws SQLException, ClassNotFoundException, IOException {
+    public void deleteUser(long id){
         userDAO.deleteUser(id);
     }
 
-    public List<User> findAllUsers() throws SQLException, ClassNotFoundException, IOException {
+    public List<User> findAllUsers(){
         return userDAO.findAllUsers();
     }
 
-    public User getUserByLogin(String login) throws SQLException {
+    public User getUserByLogin(String login){
         return userDAO.getUserByLogin(login);
     }
 }

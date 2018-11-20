@@ -17,15 +17,8 @@ public class DeleteUserServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long id = Long.valueOf(req.getParameter("id"));
-        DBService dbService = null;
-        try {
-            dbService = new DBService();
-            dbService.deleteUser(id);
-        }catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBService dbService = new DBService();
+        dbService.deleteUser(id);
         resp.sendRedirect("/userList");
     }
 }

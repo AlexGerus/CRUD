@@ -41,16 +41,9 @@ public class EditUserServlet extends HttpServlet {
         String rolechange = req.getParameter("rolechange");
         String loginchange = req.getParameter("loginchange");
         String passwordchange = req.getParameter("passwordchange");
-        DBService dbService = null;
-        try {
-            dbService = new DBService();
-            User user = new User(idchange, namechange, agechange, rolechange, loginchange, passwordchange);
-            dbService.updateUser(user);
-        }catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBService dbService = new DBService();
+        User user = new User(idchange, namechange, agechange, rolechange, loginchange, passwordchange);
+        dbService.updateUser(user);
         resp.sendRedirect("/userList");
 
     }

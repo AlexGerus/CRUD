@@ -19,17 +19,9 @@ public class UserListServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBService dbService = null;
-        try {
-            dbService = new DBService();
-            List<User> list = dbService.findAllUsers();
-            req.setAttribute("list", list);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBService dbService = new DBService();
+        List<User> list = dbService.findAllUsers();
+        req.setAttribute("list", list);
         RequestDispatcher dispatcher = req.getRequestDispatcher("userList.jsp");
         dispatcher.forward(req, resp);
     }

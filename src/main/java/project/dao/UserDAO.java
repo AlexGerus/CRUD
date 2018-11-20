@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UserDAO {
     User findUserById(long id);
-    long saveUser(User user) throws SQLException;
-    void updateUser(User user) throws SQLException;
-    void signUpUser(User user) throws SQLException;
-    void deleteUser(long id) throws SQLException;
-    List<User> findAllUsers() throws SQLException;
-    User getUserByLogin(String login) throws SQLException;
+    long saveUser(User user);
+    void updateUser(User user);
+    void signUpUser(User user);
+    void deleteUser(long id);
+    List<User> findAllUsers();
+    User getUserByLogin(String login);
 
 }

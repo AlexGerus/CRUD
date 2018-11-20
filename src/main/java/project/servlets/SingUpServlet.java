@@ -20,17 +20,9 @@ public class SingUpServlet extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("age"));
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        DBService dbService = null;
-        try{
-            dbService = new DBService();
-            User user = new User(name, age, "User", login, password);
-            dbService.signUpUser(user);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBService dbService = new DBService();
+        User user = new User(name, age, "User", login, password);
+        dbService.signUpUser(user);
         resp.sendRedirect("index.jsp");
 
     }

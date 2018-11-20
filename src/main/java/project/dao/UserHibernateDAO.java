@@ -1,10 +1,9 @@
 package project.dao;
 
-import project.dbHelper.DBHelper;
+import project.dbService.DBHelper;
 import project.module.User;
 
 import javax.persistence.EntityManager;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO{
@@ -36,7 +35,7 @@ public class UserHibernateDAO implements UserDAO{
     }
 
     @Override
-    public void signUpUser(User user) throws SQLException {
+    public void signUpUser(User user){
         em.getTransaction().begin();
         if (!em.contains(user)){
             em.persist(user);

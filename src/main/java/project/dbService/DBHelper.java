@@ -1,4 +1,4 @@
-package project.dbHelper;
+package project.dbService;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
